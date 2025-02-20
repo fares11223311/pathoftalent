@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <title>PATH OF TALENT</title>
+    <link rel="stylesheet" href="rate.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
+    <link rel="icon" href="TEAM 2.png">
+</head>
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Path Of Talent</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="https://chat.whatsapp.com/BV0OGDaq8PzJ1hACJ5T36d">Whats app</a>
+              <a class="nav-link" href="#">Facebook</a>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="container-box">
+                <h1 class="fw-bold">Student Login</h1>
+                <input type="text" id="username" class="form-control" placeholder="Username">
+                <input type="password" id="password" class="form-control" placeholder="Password">
+                <button class="bbbbb" onclick="login()">Login</button>
+            </div>
+            <div id="student-info" class="ff" style="width: 20rem; display: none;">
+              <div class="card-header text-white text-center fs-2" style="font-size: 20px; font-weight:bolder; background-color: #0a0546;">STUDENT CARD</div>
+              <img id="student-img" src="fares.jpg" alt="Student Image" class="card-img-top rounded-circle border border-danger border-4 shadow-sm" style="width: 120px; height: 120px; margin-left: 92px; margin-top: 20px; margin-bottom: -10px;">
+              <div class="card-body text-center">
+                  <h5 id="student-name" class="card-title fw-bold fs-2"></h5>
+                  <p class="student-idid">ID: <span id="student-id"></span></p>
+              </div>
+              <div class="ms-5">
+                <div class="stats-badge">★ Bonus: <span id="student-bonus"></span></div>
+                <div class="stats-badge1">▼ Minus: <span id="student-minus"></span></div>
+              </div>
+              <div class="card-body text-center">
+                  <p class="fw-bold text-secondary">Thanks for your time</p>
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+<script>
+const students = {
+    "abdullah.as@pot": { id: "2420753", name: "Abdullah Samir", bonus: 11, minus: 0, img: "abd.jpg" },
+    "hanin.ab@pot": { id: "2420394", name: "Hanin Abdelkarim", bonus: 6, minus: 0, img: "haneeb.jpg" },
+    "soma.fa@pot": { id: "2420563", name: "Soma Fahmy", bonus: 9, minus: 0, img: "soma.jpg" },
+    "hamada.ga@pot": { id: "2420384", name: "Hamada Gaber", bonus: 4, minus: 0, img: "hama.jpg" },
+    "mohamed.ab@pot": { id: "2420990", name: "Mohamed Ayman abo zaid", bonus: 13, minus: 0, img: "ayman.jpg" },
+    "donia.ah@pot": { id: "2420414", name: "Donia Ahmed", bonus: 9, minus: 0, img: "donia.jpg" },
+    "habiba.wa@pot": { id: "2420366", name: "Habiba Walid", bonus: 9, minus: 0, img: "habeba atta.jpg" },
+    "abdelrahman.at@pot": { id: "2420713", name: "Abdelrahman Atef", bonus: 7, minus: 0, img: "zoka.jpg" },
+    "moaz.mo@pot": { id: "2421221", name: "Moaz Mohamed", bonus: 11, minus: 0, img: "moaz.jpg" },
+    "rawan.ta@pot": { id: "2420464", name: "Rawan Tarek", bonus: 9, minus: 0, img: "rewan.jpg" },
+    "mazin.mo@pot": { id: "2420947", name: "Mazin Mohamed", bonus: 15, minus: 0, img: "mazen.jpg" },
+    "hosni.mo@pot": { id: "2420380", name: "Hosni Mohamed", bonus: 11, minus: 0, img: "hosni.jpg" },
+    "fares.ma@pot": { id: "2420879", name: "Fares Mahmoud", bonus: 15, minus: 0, img: "fares.jpg" },
+    "doaa.kh@pot": { id: "2420410", name: "Doaa Khamees", bonus: 9, minus: 0, img: "doaa.jpg" },
+    "khalid@pot": { id: "2420403", name: "Khalid Samir", bonus: 9, minus: 0, img: "khaledsamir.jpg" },
+    "hanin.ha@pot": { id: "2420399", name: "Hanin Hashim", bonus: 5, minus: -2, img: "hash.jpg" },
+    "hamdy.ah@pot": { id: "2420385", name: "Hamdy Ashraf", bonus: 9, minus: 0, img: "hamdy ashraf.jpg" },
+    "rizk.re@pot": { id: "2420446", name: "Rizk Reda", bonus: 9, minus: 0, img: "reezk.jpg" },
+    "islam.as@pot": { id: "2420115", name: "Islam Saeed", bonus: 9, minus: 0, img: "eslaam.jpg" },
+    "sief.al@pot": { id: "2420568", name: "Sief Alaa", bonus: 11, minus: 0, img: "saif.jpg" },
+    "mohamed.re@pot": { id: "2421025", name: "Mohamed Reda", bonus: 9, minus: 0, img: "ssss.jpg" },
+    "mohamed.ay@pot": { id: "2420981", name: "Mohamed Aymen", bonus: 5, minus: -2, img: "aym.jpg" },
+    "abdelrahman.al@pot": { id: "2420725", name: "Abdelrahman Allam", bonus: 2, minus: 0, img: "allam.jpg" },
+    "abdullah.ho@pot": { id: "2421537", name: "Abdullah Hosni", bonus: 7, minus: -2, img: "hammam.jpg" },
+    "hanin.wa@pot": { id: "2420400", name: "Hanin Walid", bonus: 9, minus: 0, img: "hanen atta.jpg" },
+    "youssef.mo@pot": { id: "2421511", name: "Youssef Mohamed", bonus: 7, minus: 0, img: "aaaa.jpg" },
+    "ahmed.mo@pot": { id: "2420224", name: "Ahmed Mohamed", bonus: 4, minus: 0, img: "ali.jpg" },
+    "omar.ta@pot": { id: "2420821", name: "Omar Tamer", bonus: 7, minus: 0, img: "omar tamer.jpg" },
+    "rahma.ah@pot": { id: "2420431", name: "Rahma Ahmed", bonus: 9, minus: 0, img: "rahma.jpg" },
+    "rawy.mo@pot": { id: "2420427", name: "Rawy Mohamed", bonus: 2, minus: 0, img: "rawy.jpg" }
+};
+
+function login() {
+    const username = document.getElementById("username").value.toLowerCase().trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (students[username] && students[username].id === password) {
+        document.querySelector(".container-box").style.display = "none";
+        document.getElementById("student-info").style.display = "block";
+        document.getElementById("student-name").innerText = students[username].name;
+        document.getElementById("student-id").innerText = students[username].id;
+        document.getElementById("student-bonus").innerText = students[username].bonus;
+        document.getElementById("student-minus").innerText = students[username].minus;
+        document.getElementById("student-img").src = students[username].img;
+    } else {
+        alert("Invalid Username or Password!");
+    }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
