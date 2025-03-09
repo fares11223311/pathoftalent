@@ -1,109 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PoT</title>
-    <link rel="stylesheet" href="rate.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
-    <link rel="icon" href="TEAM 2.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e1e7f0;
+            text-align: center;
+        }
+        #login-container {
+            width: 450px;
+            margin: 150px auto;
+            padding: 40px;
+            background: rgba(80, 81, 121, 0.541);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 5px;
+            border: 1px solid #291857;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: rgb(245, 240, 247);
+            border: none;
+            cursor: pointer;
+        }
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            display: none;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #007bff;
+            color: white;
+        }
+        #menu-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        #sidebar {
+            width: 250px;
+            background: white;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            height: 100%;
+            transition: left 0.3s ease-in-out;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+        #sidebar ul {
+            list-style: none;
+            padding: 20px;
+        }
+        #sidebar li {
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+        #sidebar li:hover {
+            background: #007bff;
+            color: white;
+        }
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        #notification-bar {
+            background: #ffcc00;
+            padding: 15px;
+            display: none;
+            border-radius: 10px;
+            margin: 10px auto;
+            width: 60%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        #user-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        #user-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+    </style>
 </head>
-<div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Path Of Talent</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="https://chat.whatsapp.com/BV0OGDaq8PzJ1hACJ5T36d">Whats app</a>
-              <a class="nav-link" href="#">Facebook</a>
-              
-            </div>
-          </div>
-        </div>
-      </nav>
-      <div class="container">
-        <div class="d-flex justify-content-center">
-            <div class="container-box">
-                <h1 class="fw-bold">Student Login</h1>
-                <input type="text" id="username" class="form-control" placeholder="Username">
-                <input type="password" id="password" class="form-control" placeholder="Password">
-                <button class="bbbbb" onclick="login()">Login</button>
-            </div>
-            <div id="student-info" class="ff" style="width: 20rem; display: none;">
-              <div class="card-header text-white text-center fs-2" style="font-size: 20px; font-weight:bolder; background-color: #0a0546;">STUDENT CARD</div>
-              <img id="student-img" src="fares.jpg" alt="Student Image" class="card-img-top rounded-circle border border-danger border-4 shadow-sm" style="width: 120px; height: 120px; margin-left: 92px; margin-top: 20px; margin-bottom: -10px;">
-              <div class="card-body text-center">
-                  <h5 id="student-name" class="card-title fw-bold fs-2"></h5>
-                  <p class="student-idid">ID: <span id="student-id"></span></p>
-              </div>
-              <div class="ms-5">
-                <div class="stats-badge">★ Bonus: <span id="student-bonus"></span></div>
-                <div class="stats-badge1">▼ Minus: <span id="student-minus"></span></div>
-              </div>
-              <div class="card-body text-center">
-                  <p class="fw-bold text-secondary">Thanks for your time</p>
-              </div>
-          </div>
-        </div>
-        </div>
-      </div>
-<script>
-const students = {
-    "abdullah.as@pot": { id: "2420753", name: "Abdullah Samir", bonus: 21, minus: 0, img: "abd.jpg" },
-    "hanin.ab@pot": { id: "2420394", name: "Hanin Abdelkarim", bonus: 26, minus: 0, img: "haneeb.jpg" },
-    "soma.fa@pot": { id: "2420563", name: "Soma Fahmy", bonus: 24, minus: 0, img: "soma.jpg" },
-    "hamada.ga@pot": { id: "2420384", name: "Hamada Gaber", bonus: 19, minus: 0, img: "hama.jpg" },
-    "mohamed.ab@pot": { id: "2420990", name: "Mohamed Ayman abo zaid", bonus: 33, minus: 0, img: "ayman.jpg" },
-    "donia.ah@pot": { id: "2420414", name: "Donia Ahmed", bonus: 19, minus: 0, img: "donia.jpg" },
-    "habiba.wa@pot": { id: "2420366", name: "Habiba Walid", bonus: 29, minus: 0, img: "habeba atta.jpg" },
-    "abdelrahman.at@pot": { id: "2420713", name: "Abdelrahman Atef", bonus: 22, minus: 0, img: "zoka.jpg" },
-    "moaz.mo@pot": { id: "2421221", name: "Moaz Mohamed", bonus: 21, minus: 0, img: "moaz.jpg" },
-    "rawan.ta@pot": { id: "2420464", name: "Rawan Tarek", bonus: 19, minus: 0, img: "rewan.jpg" },
-    "mazin.mo@pot": { id: "2420947", name: "Mazin Mohamed", bonus: 43, minus: 0, img: "mazen.jpg" },
-    "hosni.mo@pot": { id: "2420380", name: "Hosni Mohamed", bonus: 20, minus: 0, img: "hosni.jpg" },
-    "fares.ma@pot": { id: "2420879", name: "Fares Mahmoud", bonus: 23, minus: 0, img: "fares.jpg" },
-    "doaa.kh@pot": { id: "2420410", name: "Doaa Khamees", bonus: 24, minus: 0, img: "doaa.jpg" },
-    "khalid@pot": { id: "2420403", name: "Khalid Samir", bonus: 19, minus: 0, img: "khalid.jpg" },
-    "hanin.ha@pot": { id: "2420399", name: "Hanin Hashim", bonus: 17, minus: 0, img: "hash.jpg" },
-    "hamdy.ah@pot": { id: "2420385", name: "Hamdy Ashraf", bonus: 19, minus: 0, img: "hamdy ashraf.jpg" },
-    "rizk.re@pot": { id: "2420446", name: "Rizk Reda", bonus: 19, minus: 0, img: "reezk.jpg" },
-    "islam.as@pot": { id: "2420115", name: "Islam Saeed", bonus: 24, minus: 0, img: "eslaam.jpg" },
-    "sief.al@pot": { id: "2420568", name: "Sief Alaa", bonus: 36, minus: 0, img: "saif.jpg" },
-    "mohamed.re@pot": { id: "2421025", name: "Mohamed Reda", bonus: 19, minus: 0, img: "ssss.jpg" },
-    "mohamed.ay@pot": { id: "2420981", name: "Mohamed Aymen", bonus: 20, minus: 0, img: "aym.jpg" },
-    "abdelrahman.al@pot": { id: "2420725", name: "Abdelrahman Allam", bonus: 22, minus: 0, img: "allam.jpg" },
-    "abdullah.ho@pot": { id: "2421537", name: "Abdullah Hosni", bonus: 22, minus: 0, img: "hammam.jpg" },
-    "hanin.wa@pot": { id: "2420400", name: "Hanin Walid", bonus: 24, minus: 0, img: "hanen atta.jpg" },
-    "youssef.mo@pot": { id: "2421511", name: "Youssef Mohamed", bonus: 22, minus: 0, img: "yossef.jpg" },
-    "ahmed.mo@pot": { id: "2420224", name: "Ahmed Mohamed", bonus: 15, minus: 0, img: "ali.jpg" },
-    "omar.ta@pot": { id: "2420821", name: "Omar Tamer", bonus: 27, minus: 0, img: "omar tamer.jpg" },
-    "rahma.ah@pot": { id: "2420431", name: "Rahma Ahmed", bonus: 29, minus: 0, img: "rahma.jpg" },
-    "rawy.mo@pot": { id: "2420427", name: "Rawy Mohamed", bonus: 17, minus: 0, img: "rawy.jpg" },
-    "body.no@pot": { id: "20240523", name: "BODY NOUFAL", bonus:"اجدع حد فى الدنيا ", minus:"بودا الى فى القلب", img: "body.jpg" },
-    "hanen.ha@pot": { id: "2420393", name: "Eng\ Haneen Ashry", bonus: 25, minus: 0, img: "ashry.jpg" },
+<body>
+    <div id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+    <div id="main-container">
+        <header>
+            <button id="menu-btn" onclick="toggleMenu()">☰</button>
+            <h2 id="page-title">Home</h2>
+        </header>
+        <div id="notification-bar"></div>
+
+        <nav id="sidebar">
+            <ul>
+                <li onclick="navigate('Home')">🏠 Home</li>
+                <li onclick="navigate('Rate')">⭐ Rate</li>
+                <li onclick="navigate('Tasks')">📋 Tasks</li>
+                <li onclick="openFacebook()">📘 Facebook</li>
+                <li onclick="openWhatsApp()">💬 WhatsApp</li>
+            </ul>
+        </nav>
+        <main id="content">
+            <h2>Welcome to Home</h2>
+        </main>
+    </div>
+    <script>
+        const usersData = {
+    "abdullah.as@pot": {
+        password: "your_password",
+        name: "Abdullah Samir Bashir Abdel Samad",
+        academicId: "2420753",
+        image: "samir.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Presentation", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "hanin.ab@pot": {
+        password: "your_password",
+        name: "Hanin Abdelkarim Mahmoud",
+        academicId: "2420394",
+        image: "abdelhre.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 2 },
+            { name: "Project Errors", points: 5 },
+            { name: "Task", points: 15 }
+        ]
+    },
+    "soma.fa@pot": {
+        password: "2420563",
+        name: "Soma Fahmy Abdelhamid Abdelaziz Abdelmalek",
+        academicId: "2420563",
+        image: "soma,jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "hamada.ga@pot": {
+        password: "2420384",
+        name: "Hamada Gaber Ragab Morsi Ahmed",
+        academicId: "2420384",
+        image: "hmad.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Attending Meetings", points: 5 },
+            { name: "Task", points: 10 },
+            { name: "Meeting", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "mohamed.ab@pot": {
+        password: "2420990",
+        name: "Mohamed Ayman Abouzeid Selim Abdelrahman",
+        academicId: "2420990",
+        image: "abo.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 4 },
+            { name: "Meeting", points: 5 },
+            { name: "Organizing Presentation", points: 10 },
+            { name: "Organizing Presentation", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "donia.ah@pot": {
+        password: "2420414",
+        name: "Donia Ahmed Mohamed Abdelrahman Karim",
+        academicId: "2420414",
+        image: "donia.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 10 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "habiba.wa@pot": {
+        password: "2420366",
+        name: "Habiba Walid Abdelkarim Atta",
+        academicId: "2420366",
+        image: "hbib,jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Project Presentation", points: 15 },
+            { name: "Meeting", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "abdelrahman.at@pot": {
+        password: "2420713",
+        name: "Abdelrahman Atef Mohamed Ali",
+        academicId: "2420713",
+        image: "zok.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "moaz.mo@pot": {
+        password: "2421221",
+        name: "Moaz Mohamed Rafiq Farghaly",
+        academicId: "2421221",
+        image: "moa.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "rawan.ta@pot": {
+        password: "2420464",
+        name: "Rawan Tarek Abbas Tolba Hennedy",
+        academicId: "2420464",
+        image: "rewan.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Ramadan Question", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+
+    "mazin.mo@pot": {
+        password: "2420947",
+        name: "Mazin Mohamed Anwar Hussein Abdelkhaleq",
+        academicId: "2420947",
+        image: "maz.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 4 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 20 },
+            { name: "Organizing Presentation", points: 10 },
+            { name: "Organizing Presentation", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "hosni.mo@pot": {
+        password: "2420380",
+        name: "Hosni Mohamed Hosni Mohamed",
+        academicId: "2420380",
+        image: "hos.jpg",
+        tasks: [
+            { name: "ID Creation", points: 4 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Evaluation Website", points: 9 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "fares.ma@pot": {
+        password: "2420879",
+        name: "Fares Mahmoud Fathy Elsabbagh",
+        academicId: "2420879",
+        image: "fares.jpg",
+        tasks: [
+            { name: "Logo Creation", points: 4 },
+            { name: "Meeting", points: 2 },
+            { name: "Background Design", points: 5 },
+            { name: "Meeting", points: 5 },
+            { name: "Evaluation Website", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "doaa.kh@pot": {
+        password: "2420410",
+        name: "Doaa Khamees Abdelsamea Mohamed",
+        academicId: "2420410",
+        image: "do.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "khalid@pot": {
+        password: "2420403",
+        name: "Khalid Samir Mohamed Mohamed",
+        academicId: "2420403",
+        image: "kh.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Follow-up", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "hanin.ha@pot": {
+        password: "2420399",
+        name: "Hanin Hachem Ismail Abdeljalil",
+        academicId: "2420399",
+        image: "hash.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Website Design", points: 5 },
+            { name: "Task", points: 5 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "hamdy.ah@pot": {
+        password: "2420385",
+        name: "Hamdy Ashraf Abdelkader Mousa",
+        academicId: "2420385",
+        image: "ham.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Meeting", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "rizk.re@pot": {
+        password: "2420446",
+        name: "Rizk Reda Abdelwahed Ali Gweida",
+        academicId: "2420446",
+        image: "rez.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "islam.as@pot": {
+        password: "2420115",
+        name: "eslam saed abdelglel",
+        academicId: "2420115",
+        image: "asl.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Arduino Research", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "sief.al@pot": {
+        password: "2420568",
+        name: "Sief El-Din Alaa Elsayed Abdel Latif Hassan",
+        academicId: "2420568",
+        image: "sif.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+
+    "mohamed.re@pot": {
+        password: "2421025",
+        name: "Mohamed Reda Abdelrasoul Mohamed",
+        academicId: "2421025",
+        image: "red.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "mohamed.ay@pot": {
+        password: "2420981",
+        name: "Mohamed Ayman Abdelhamid Ibrahim Abouelnour",
+        academicId: "2420981",
+        image: "borg.jpg",
+        tasks: [
+            { name: "Excused", points: 0 },
+            { name: "Excused", points: 0 },
+            { name: "Meeting", points: 5 },
+            { name: "Attending Meetings", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "abdelrahman.al@pot": {
+        password: "2420725",
+        name: "Abdelrahman Mohamed Allam",
+        academicId: "2420725",
+        image: "all.jpg",
+        tasks: [
+            { name: "Excused", points: 0 },
+            { name: "Meeting", points: 2 },
+            { name: "Attending Meetings", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "abdullah.ho@pot": {
+        password: "2421537",
+        name: "Abdullah Hosni Abdelmagid",
+        academicId: "2421537",
+        image: "abd.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Excused", points: 0 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "hanin.wa@pot": {
+        password: "2420400",
+        name: "Hanin Walid Abdelkarim Atta",
+        academicId: "2420400",
+        image: "wled.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 15 },
+            { name: "Meeting", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "youssef.mo@pot": {
+        password: "2421511",
+        name: "Youssef Mohamed Mohamed Abouzeid",
+        academicId: "2421511",
+        image: "you.jpg",
+        tasks: [
+            { name: "Excused", points: 0 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "ahmed.mo@pot": {
+        password: "2420224",
+        name: "Ahmed Mohamed Ali Abou Elhmed Hreidy",
+        academicId: "2420224",
+        image: "ahm.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 11 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "omar.ta@pot": {
+        password: "2420821",
+        name: "Omar Tamer Ramzy",
+        academicId: "2420821",
+        image: "omar.jpg",
+        tasks: [
+            { name: "Excused", points: 0 },
+            { name: "Meeting", points: 2 },
+            { name: "Project Presentation", points: 10 },
+            { name: "Meeting", points: 5 },
+            { name: "Task", points: 10 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+    "rahma.ah@pot": {
+        password: "2420431",
+        name: "Rahma Ahmed Abdelmoneim Ahmed Elashqar",
+        academicId: "2420431",
+        image: "rahma.jpg",
+        tasks: [
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 2 },
+            { name: "Meeting", points: 5 },
+            { name: "Project Presentation", points: 20 },
+            { name: "Meeting", points: 5 },
+            { name: "Ramadan Question", points: 5 }
+        ]
+    },
+    "rawy.mo@pot": {
+        password: "2420427",
+        name: "Rawy Mohamed Rawy",
+        academicId: "2420427",
+        image: "rawe.jpg",
+        tasks: [
+            { name: "Excused", points: 0 },
+            { name: "Meeting", points: 2 },
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 5 }
+        ]
+    },
+
 };
 
-function login() {
-    const username = document.getElementById("username").value.toLowerCase().trim();
-    const password = document.getElementById("password").value.trim();
+        let currentUser = null;
 
-    if (students[username] && students[username].id === password) {
-        document.querySelector(".container-box").style.display = "none";
-        document.getElementById("student-info").style.display = "block";
-        document.getElementById("student-name").innerText = students[username].name;
-        document.getElementById("student-id").innerText = students[username].id;
-        document.getElementById("student-bonus").innerText = students[username].bonus;
-        document.getElementById("student-minus").innerText = students[username].minus;
-        document.getElementById("student-img").src = students[username].img;
-    } else {
-        alert("Invalid Username or Password!");
-    }
-}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        function login() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorMessage = document.getElementById("error-message");
+
+            if (usersData[username] && usersData[username].password === password) {
+                currentUser = usersData[username];
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("main-container").style.display = "flex";
+
+                document.getElementById("notification-bar").style.display = "block";
+                document.getElementById("notification-bar").innerHTML = `
+                    <div id="user-info">
+                        <img src="${currentUser.image}" alt="User Image">
+                        <div>
+                            <strong>${currentUser.name}</strong><br>
+                            Academic ID: ${currentUser.academicId}
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById("content").innerHTML = `<h2>Welcome, ${currentUser.name}!</h2>`;
+            } else {
+                errorMessage.innerText = "Invalid username or password!";
+            }
+        }
+
+        function toggleMenu() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+        }
+
+        document.addEventListener("click", function (event) {
+            const sidebar = document.getElementById("sidebar");
+            const menuBtn = document.getElementById("menu-btn");
+
+            if (!sidebar.contains(event.target) && event.target !== menuBtn) {
+                sidebar.style.left = "-250px";
+            }
+        });
+
+        function navigate(page) {
+            document.getElementById("page-title").innerText = page;
+            
+            if (page === "Rate") {
+                let bonus = 0, minus = 0;
+                currentUser.tasks.forEach(task => {
+                    if (task.points > 0) {
+                        bonus += task.points;
+                    } else {
+                        minus += Math.abs(task.points);
+                    }
+                });
+                document.getElementById("content").innerHTML = `
+                    <h2>Rate</h2>
+                    <p>Bonus: <strong>${bonus}</strong></p>
+                    <p>Minus: <strong>${minus}</strong></p>
+                    <p>Total: <strong>${bonus - minus}</strong></p>
+                `;
+            } else if (page === "Tasks") {
+                let tasksList = currentUser.tasks.map(task => `<li>${task.name} (${task.points > 0 ? '+' : ''}${task.points})</li>`).join("");
+                document.getElementById("content").innerHTML = `<h2>Tasks</h2><ul>${tasksList}</ul>`;
+            } else {
+                document.getElementById("content").innerHTML = `<h2>${page}</h2>`;
+            }
+        }
+
+        function openFacebook() {
+            window.open("https://www.facebook.com", "_blank");
+        }
+        function openWhatsApp() {
+            window.open("https://web.whatsapp.com", "_blank");
+        }
+    </script>
 </body>
 </html>
