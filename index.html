@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PoT</title>
+    <link rel="icon" type="image/png" href="TEAM.png">
+    <meta name="author" content="khalid samir mohamed">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif;;
             margin: 0;
             padding: 0;
-            background-color: #e1e7f0;
+            background-image: url(kkj.png);
             text-align: center;
         }
         #login-container {
@@ -82,14 +84,15 @@
             padding: 20px;
         }
         #notification-bar {
-            background: #ffcc00;
-            padding: 15px;
+            background: #4400ff38;
+            padding: 20px;
             display: none;
-            border-radius: 10px;
+            border-radius: 20px;
             margin: 10px auto;
-            width: 60%;
+            width: 80%;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size:20px;
         }
         #user-info {
             display: flex;
@@ -98,11 +101,12 @@
             gap: 15px;
         }
         #user-info img {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 2px solid white;
         }
+        
     </style>
 </head>
 <body>
@@ -122,7 +126,6 @@
 
         <nav id="sidebar">
             <ul>
-                <li onclick="navigate('Home')">🏠 Home</li>
                 <li onclick="navigate('Rate')">⭐ Rate</li>
                 <li onclick="navigate('Tasks')">📋 Tasks</li>
                 <li onclick="openFacebook()">📘 Facebook</li>
@@ -138,7 +141,7 @@
     "abdullah.as@pot": {
         password: "2420753",
         name: "Abdullah Samir Bashir Abdel Samad",
-        academicId: "2420753",
+        Character: "عامل من بنها 🙃",
         image: "samir.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -146,26 +149,30 @@
             { name: "Presentation", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Task", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
+
         ]
     },
     "hanin.ab@pot": {
         password: "2420394",
         name: "Hanin Abdelkarim Mahmoud",
-        academicId: "2420394",
-        image: "abdelhre.jpg",
+        Character: "باشا التأجيل ⏭️",
+        image: "abdelkre.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Project Presentation", points: 2 },
             { name: "Project Errors", points: 5 },
-            { name: "Task", points: 15 }
+            { name: "Task", points: 15 },
+            { name: "Meeting", points: 20 },
+
         ]
     },
     "soma.fa@pot": {
         password: "2420563",
         name: "Soma Fahmy Abdelhamid Abdelaziz Abdelmalek",
-        academicId: "2420563",
+        Character: "الهادي البادي 😶",
         image: "soma.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -173,13 +180,15 @@
             { name: "Meeting", points: 5 },
             { name: "Task", points: 15 },
             { name: "Meeting", points: 5 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
+            { name: "Meeting", points: 30 }
+
         ]
     },
     "hamada.ga@pot": {
         password: "2420384",
         name: "Hamada Gaber Ragab Morsi Ahmed",
-        academicId: "2420384",
+        Character: "ساكت بس شايفك 😌",
         image: "hmad.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -187,13 +196,14 @@
             { name: "Attending Meetings", points: 5 },
             { name: "Task", points: 10 },
             { name: "Meeting", points: 5 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
+            { name: "Ramadan Question", points: 5 },
         ]
     },
     "mohamed.ab@pot": {
         password: "2420990",
         name: "Mohamed Ayman Abouzeid Selim Abdelrahman",
-        academicId: "2420990",
+        Character: "بتاع كله ⚙️",
         image: "abo.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -202,26 +212,28 @@
             { name: "Meeting", points: 5 },
             { name: "Organizing Presentation", points: 10 },
             { name: "Organizing Presentation", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 60 },
         ]
     },
     "donia.ah@pot": {
         password: "2420414",
         name: "Donia Ahmed Mohamed Abdelrahman Karim",
-        academicId: "2420414",
+        Character: "مطنش بس مركز 🙄",
         image: "donia.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Task", points: 10 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "habiba.wa@pot": {
         password: "2420366",
         name: "Habiba Walid Abdelkarim Atta",
-        academicId: "2420366",
+        Character: "كتاب متحرك 📖",
         image: "hbib.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -230,25 +242,27 @@
             { name: "Task", points: 15 },
             { name: "Project Presentation", points: 15 },
             { name: "Meeting", points: 5 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
+            { name: "Meeting", points: 60 },
         ]
     },
     "abdelrahman.at@pot": {
         password: "2420713",
         name: "Abdelrahman Atef Mohamed Ali",
-        academicId: "2420713",
+        Character: "الشبح 🕵️",
         image: "zok.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Task", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "moaz.mo@pot": {
         password: "2421221",
         name: "Moaz Mohamed Rafiq Farghaly",
-        academicId: "2421221",
+        Character: "أبو حجة جاهزة 🎭",
         image: "moa.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -256,13 +270,14 @@
             { name: "Project Presentation", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Project Presentation", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 60 },
         ]
     },
     "rawan.ta@pot": {
         password: "2420464",
         name: "Rawan Tarek Abbas Tolba Hennedy",
-        academicId: "2420464",
+        Character: "ابو نظرية 🎓",
         image: "rewan.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -270,14 +285,15 @@
             { name: "Meeting", points: 5 },
             { name: "Project Presentation", points: 10 },
             { name: "Ramadan Question", points: 5 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
 
     "mazin.mo@pot": {
         password: "2420947",
         name: "Mazin Mohamed Anwar Hussein Abdelkhaleq",
-        academicId: "2420947",
+        Character: "المخطط الكبير 🗺️",
         image: "maz.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -287,26 +303,27 @@
             { name: "Project Presentation", points: 20 },
             { name: "Organizing Presentation", points: 10 },
             { name: "Organizing Presentation", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 60 },
         ]
     },
     "hosni.mo@pot": {
         password: "2420380",
         name: "Hosni Mohamed Hosni Mohamed",
-        academicId: "2420380",
+        Character: "آخر واحد يخلص 🏁",
         image: "hos.jpg",
         tasks: [
             { name: "ID Creation", points: 4 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Evaluation Website", points: 9 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
         ]
     },
     "fares.ma@pot": {
         password: "2420879",
         name: "Fares Mahmoud Fathy Elsabbagh",
-        academicId: "2420879",
+        Character: "مزاجنجي بك 😑",
         image: "fares.jpg",
         tasks: [
             { name: "Logo Creation", points: 4 },
@@ -314,52 +331,55 @@
             { name: "Background Design", points: 5 },
             { name: "Meeting", points: 5 },
             { name: "Evaluation Website", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
         ]
     },
     "doaa.kh@pot": {
         password: "2420410",
         name: "Eng/Doaa Khamis Abdelsamea Mohamed",
-        academicId: "2420410",
+        Character: "مشاكس بس طيب 🤗",
         image: "do.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Task", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "khalid@pot": {
         password: "2420403",
         name: "Khalid Samir Mohamed Mohamed",
-        academicId: "2420403",
+        Character: " بتاع الأحلام 🌙",
         image: "kh.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Follow-up", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "hanin.ha@pot": {
         password: "2420399",
         name: "Hanin Hachem Ismail Abdeljalil",
-        academicId: "2420399",
+        Character: "ابو القفشات 😂",
         image: "hash.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Website Design", points: 5 },
             { name: "Task", points: 5 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "hamdy.ah@pot": {
         password: "2420385",
         name: "Hamdy Ashraf Abdelkader Mousa",
-        academicId: "2420385",
+        Character: "الشيخ الحكيم 🦉",
         image: "ham.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -367,39 +387,42 @@
             { name: "Meeting", points: 5 },
             { name: "Project Presentation", points: 10 },
             { name: "Meeting", points: 5 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
+            { name: "Meeting", points: 20 },
         ]
     },
     "rizk.re@pot": {
         password: "2420446",
         name: "Rizk Reda Abdelwahed Ali Gweida",
-        academicId: "2420446",
+        Character: "هيفوتك بمزاجه 😏",
         image: "rez.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Project Presentation", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 20 },
         ]
     },
     "islam.as@pot": {
         password: "2420115",
         name: "eslam saed abdelglel",
-        academicId: "2420115",
-        image: "asl.jpg",
+        Character: "آخر واحد يوصل ⏳",
+        image: "esl.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Arduino Research", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "sief.al@pot": {
         password: "2420568",
         name: "Seif El-Din Alaa Elsayed Abdel Latif Hassan",
-        academicId: "2420568",
+        Character: "دماغه متكلفة 🧐",
         image: "sif.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -411,13 +434,14 @@
             { name: "Project Presentation", points: 10 },
             { name: "Meeting", points: 5 },
              { name: "Ramdan Question", points: 5 },
+             { name: "Meeting", points: 60 },
         ]
     },
 
     "mohamed.re@pot": {
         password: "2421025",
         name: "Mohamed Reda Abdelrasoul Mohamed",
-        academicId: "2421025",
+        Character: "سرحان الدفعة 🤔",
         image: "red.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -430,7 +454,7 @@
     "mohamed.ay@pot": {
         password: "2420981",
         name: "Mohamed Ayman Abdelhamid Ibrahim Abouelnour",
-        academicId: "2420981",
+        Character: "معترض أفندي 🤨",
         image: "borg.jpg",
         tasks: [
             { name: "Excused", points: 0 },
@@ -438,39 +462,40 @@
             { name: "Meeting", points: 5 },
             { name: "Attending Meetings", points: 5 },
             { name: "Task", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 60 },
         ]
     },
     "abdelrahman.al@pot": {
         password: "2420725",
         name: "Abdelrahman Mohamed Allam",
-        academicId: "2420725",
+        Character: "رايق بس خطير ☕",
         image: "all.jpg",
         tasks: [
             { name: "Excused", points: 0 },
             { name: "Meeting", points: 2 },
             { name: "Attending Meetings", points: 5 },
             { name: "Task", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
         ]
     },
     "abdullah.ho@pot": {
         password: "2421537",
         name: "Abdullah Hosni Abdelmagid",
-        academicId: "2421537",
+        Character: "أول واحد يتحمس 🔥",
         image: "abd.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Excused", points: 0 },
             { name: "Meeting", points: 5 },
             { name: "Project Presentation", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
         ]
     },
     "hanin.wa@pot": {
         password: "2420400",
         name: "Hanin Walid Abdelkarim Atta",
-        academicId: "2420400",
+        Character: "😶الركن البعيد الهادى",
         image: "wled.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
@@ -478,38 +503,39 @@
             { name: "Meeting", points: 5 },
             { name: "Project Presentation", points: 15 },
             { name: "Meeting", points: 5 },
-            { name: "Ramadan Question", points: 5 }
+            { name: "Ramadan Question", points: 5 },
         ]
     },
     "youssef.mo@pot": {
         password: "2421511",
         name: "Youssef Mohamed Mohamed Abouzeid",
-        academicId: "2421511",
+        Character: "👤غياب ",
         image: "you.jpg",
         tasks: [
             { name: "Excused", points: 0 },
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 5 },
             { name: "Task", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 20 },
         ]
     },
     "ahmed.mo@pot": {
         password: "2420224",
         name: "Ahmed Mohamed Ali Abou Elhmed Hreidy",
-        academicId: "2420224",
+        Character: "ملك الافورة 😆",
         image: "ahm.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
             { name: "Project Presentation", points: 11 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
         ]
     },
     "omar.ta@pot": {
         password: "2420821",
         name: "Omar Tamer Ramzy",
-        academicId: "2420821",
+        Character: "🙃سعد زغلول ",
         image: "omar.jpg",
         tasks: [
             { name: "Excused", points: 0 },
@@ -517,14 +543,15 @@
             { name: "Project Presentation", points: 10 },
             { name: "Meeting", points: 5 },
             { name: "Task", points: 10 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "rahma.ah@pot": {
         password: "2420431",
         name: "Rahma Ahmed Abdelmoneim Ahmed Elashqar",
-        academicId: "2420431",
-        image: "rahma.jpg",
+        Character: "المكسوفة 😎",
+        image: "rahma.al.jpg",
         tasks: [
             { name: "Meeting", points: 2 },
             { name: "Meeting", points: 2 },
@@ -533,18 +560,19 @@
             { name: "Meeting", points: 5 },
             { name: "Ramadan Question", points: 5 },
             { name: "project presentation", points: 15 },
+            { name: "Meeting", points: 30 },
         ]
     },
     "rawy.mo@pot": {
         password: "2420427",
         name: "Rawy Mohamed Rawy",
-        academicId: "2420427",
+        Character: " نايم في العسل 😴",
         image: "rawe.jpg",
         tasks: [
             { name: "Excused", points: 0 },
             { name: "Meeting", points: 2 },
             { name: "Task", points: 15 },
-            { name: "Meeting", points: 5 }
+            { name: "Meeting", points: 5 },
         ]
     },
 
@@ -568,12 +596,71 @@
                         <img src="${currentUser.image}" alt="User Image">
                         <div>
                             <strong>${currentUser.name}</strong><br>
-                            Academic ID: ${currentUser.academicId}
+                            Character : ${currentUser.Character}
                         </div>
                     </div>
                 `;
 
-                document.getElementById("content").innerHTML = `<h2>Welcome, ${currentUser.name}!</h2>`;
+                document.getElementById("content").innerHTML = `<h3>
+                    Welcome, ${currentUser.name}!
+                    <p>
+        <h1>Path of Talent! أهلًا وسهلًا بكم في🎉🚀</h1>
+        <h3>
+            يسعدنا انضمامكم إلى رحلتنا
+            المليئة بالإبداع والتحدي! 🤩✨ هنا، نحن أكثر من مجرد فريق، نحن عائلة
+            واحدة نعمل معًا لتحقيق النجاح والتألق. استعدوا لتجربة فريدة مليئة
+            بالتعلم، الإنجاز، وروح الفريق! 💪🔥 مرحبًا بكم بيننا، رحلتنا لن تكتمل
+            إلا بكم! 🚀🎯
+        </h3>
+        </p>
+        <hr>
+        <p>
+        <h3>
+            📢 اجتماع Path of Talent – الاستعداد للعرض التقديمي! 🎤🔥
+            اليوم كان اجتماعنا الكبير لمناقشة تقديم البرزنتيشن، وفعلاً ظهر الفرق! 💡 البعض أبدع وتألق وكأنه محترف في
+            الإلقاء 🎯👏، والبعض الآخر… ضاع في النص 😂💔. لكن في النهاية، كلنا هنا لنتعلم ونطور من نفسنا، والهدف واحد:
+            نقدم برزنتيشن قوي ومميز! 💪✨
+            لسه في فرصة للجميع يستعد أكتر، والمره الجاية كلنا هنبهر اللجنة! 🚀🔥 استعدوا يا أبطال! 💯
+
+        </h3>
+        </p>
+        <p>
+        <h3>
+            😂⚽ ماتش للتاريخ… بس بطريقة تانية! 🤦‍♂️🔥
+
+            النهارده لعبنا ماتش كورة، بس بدل ما يكون عرض مهارات، كان عرض فضايح! 🤣😂 الكورة ضاعت، الجون مفتوح والكرة
+            برا، والتحكيم؟ مفيش أصلًا! 🙈😂
+
+            في النهاية، المتعة كانت حاضرة، والضحك ما وقفش! 🎉⚽ المهم إننا استمتعنا… وقررنا نسيب الاحتراف للناس التانية!
+            🤣🔥
+        </h3>
+        <img src="ماتش.jpg">
+        <img src="ماتش 2.jpg">
+        </p>
+        <p>
+        <h3>
+            📢 الاجتماع الثاني لفريق Path of Talent – خطوة جديدة نحو النجاح! 🚀🔥
+            اجتمعنا للمرة الثانية عشان نناقش المشاريع والتقدم اللي وصلنا له، وكل واحد عرض أفكاره وطريقة شغله! 🎯 بعض
+            الناس كانت مستعدة وعارفة هي بتقول إيه 💡👏، والبعض التاني لسه بيحاول يلاقي الكلمات المناسبة 😂🙈.
+            المهم إننا بنتطور خطوة بخطوة، والمشروع بيبدأ ياخد شكله النهائي! 💪✨ الجاي هيكون أقوى، استعدوا للإبداع! 🚀🔥
+        </h3>
+        </p>
+        <img src="5.jpg"">
+        
+        <p>
+        <h3>
+            🚀 الاجتماع الأول لفريق Path of Talent – البداية نحو التميز! ✨
+            اليوم كانت انطلاقتنا الرسمية، حيث اجتمعنا لوضع الأسس الأولى لمشاريعنا، تبادلنا الأفكار، وبدأنا رحلة التحدي
+            والإبداع! 💡🔥 البعض أبدع في طرح رؤيته بثقة، والبعض الآخر كان لسه بيحاول يلاقي الكلمات المناسبة، لكن الأكيد
+            إن كل خطوة بنخطوها بتقربنا من النجاح! 💪✨
+            هذه مجرد البداية، والقادم أقوى! 🚀 جاهزون لصنع شيء استثنائي؟ نحن كذلك! 🔥💯
+        </h3>
+        </p>
+
+        <img src="22.jpg">
+        <img src="33.jpg">
+        <nav id="sidebar">
+                    </h2>`;
             } else {
                 errorMessage.innerText = "Invalid username or password!";
             }
